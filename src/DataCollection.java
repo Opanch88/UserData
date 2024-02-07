@@ -25,7 +25,7 @@ public class DataCollection {
         LocalDate dateBirth = LocalDate.parse(enteredData[3]);
         String phoneNumber = enteredData[4];
         try {
-            if (phoneNumber.length() < 11) {
+            if (phoneNumber.length() < 11|| !phoneNumber.matches("\\d+")) {
                 throw new InvalidPhoneNumberException("Invalid phone number length. Must be at least 11 characters.");
             }
             Person.Gender gender = Person.Gender.valueOf(enteredData[5]);
@@ -33,12 +33,10 @@ public class DataCollection {
 
             Path srcPath = Paths.get("src");
 
-            // Create the directory inside the src directory
             String directoryName = "people";
             File directory = new File(srcPath.toFile(), directoryName);
-            directory.mkdir();  // Creates the directory if it doesn't exist
+            directory.mkdir();
 
-            // Create the file inside the directory
             String fileName = directory.getAbsolutePath() + File.separator + lastName + ".txt";
 
 
