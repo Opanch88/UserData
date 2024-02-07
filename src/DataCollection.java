@@ -30,7 +30,6 @@ public class DataCollection {
             }
             Person.Gender gender = Person.Gender.valueOf(enteredData[5]);
 
-
             Path srcPath = Paths.get("src");
 
             String directoryName = "people";
@@ -44,7 +43,7 @@ public class DataCollection {
                 fileWriter.write(new Person(lastName, firstName, patronymic, dateBirth, phoneNumber, gender).toString() + "\n");
                 fileWriter.flush();
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println("File Error !!!");
             }
 
         } catch (InvalidPhoneNumberException e) {
